@@ -1,0 +1,21 @@
+package com.example.scheduler.Database
+
+import androidx.lifecycle.LiveData
+
+class TaskRepo(private val taskDao: TaskDao) {
+
+    val taskList: LiveData<List<Task>> = taskDao.getAllTasks()
+
+    suspend fun insertTask(task:Task){
+        taskDao.insertTask(task)
+    }
+
+    suspend fun deleteTask(task:Task){
+        taskDao.deleteTask(task)
+    }
+
+    suspend fun updateTask(task: Task){
+        taskDao.updateTask(task)
+    }
+
+}
